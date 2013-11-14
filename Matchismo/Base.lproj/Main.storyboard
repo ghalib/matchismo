@@ -193,6 +193,7 @@
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="gameSelector" destination="Vm3-Pm-UyZ" id="Uq3-dH-6cp"/>
                         <outlet property="scoreLabel" destination="9Za-dt-zDA" id="ZYZ-L6-NWN"/>
                         <outletCollection property="cardButtons" destination="zub-Zh-tIy" id="ql7-Vv-oYx"/>
                         <outletCollection property="cardButtons" destination="9By-4b-1o3" id="2qr-tO-vtz"/>

@@ -23,6 +23,13 @@
     return _cards;
 }
 
+- (NSMutableArray *)chosenCards
+{
+    if (!_chosenCards)
+        _chosenCards = [[NSMutableArray alloc] init];
+    return _chosenCards;
+}
+
 - (instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck
 {
     self = [super init];
@@ -37,6 +44,8 @@
             }
         }
     }
+    // Default to a two-card matching game
+    self.gameType = 2;
     return self;
 }
 
@@ -55,28 +64,33 @@ static const int COST_TO_CHOOSE = 1;
     if (!card.isMatched) {
         if (card.isChosen) {
             card.chosen = NO;
+            [self.chosenCards removeObject:card];
         } else {
-            [self.chosenCards addObject:card];
-            if ([self.chosenCards count] == self.gameType)
-            // match against other cards
-            for (Card *otherCard in self.cards) {
-                if (otherCard.isChosen && !otherCard.isMatched) {
-                    int matchScore = [card match:@[otherCard]];
-                    if (matchScore) {
-                        self.score += matchScore * MATCH_BONUS;
-                        otherCard.matched = YES;
-                        card.matched = YES;
-                    } else {
-                        self.score -= MISMATCH_PENALTY;
-                        otherCard.chosen = NO;
-                    }
-                    break;
-                }
-            }
-            self.score -= COST_TO_CHOOSE;
             card.chosen = YES;
+            if (self.chosenCards.count == (self.gameType - 1)) {
+                // match against other cards
+                int matchScore = [card match:self.chosenCards];
+                if (matchScore) {
+                    self.score += matchScore * MATCH_BONUS;
+                    for (Card *chosenCard in self.chosenCards) {
+                        chosenCard.matched = YES;
+                    }
+                    card.matched = YES;
+                } else {
+                    self.score -= MISMATCH_PENALTY;
+                    for (Card *chosenCard in self.chosenCards) {
+                        chosenCard.chosen = NO;
+                    }
+                }
+                [self.chosenCards removeAllObjects];
+            }
+            // If we still haven't matched, add card for future consideration
+            if (!card.isMatched) {
+                [self.chosenCards addObject:card];
+            }
         }
     }
+    self.score -= COST_TO_CHOOSE;
 }
 
 @end
