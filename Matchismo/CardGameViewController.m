@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameSelector;
+@property (weak, nonatomic) IBOutlet UILabel *status;
 @end
 
 @implementation CardGameViewController

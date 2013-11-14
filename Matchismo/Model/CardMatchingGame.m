@@ -66,7 +66,6 @@ static const int COST_TO_CHOOSE = 1;
             card.chosen = NO;
             [self.chosenCards removeObject:card];
         } else {
-            card.chosen = YES;
             if (self.chosenCards.count == (self.gameType - 1)) {
                 // match against other cards
                 int matchScore = [card match:self.chosenCards];
@@ -84,6 +83,7 @@ static const int COST_TO_CHOOSE = 1;
                 }
                 [self.chosenCards removeAllObjects];
             }
+            card.chosen = YES;
             // If we still haven't matched, add card for future consideration
             if (!card.isMatched) {
                 [self.chosenCards addObject:card];
