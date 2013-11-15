@@ -22,4 +22,7 @@
 @property (nonatomic, readonly) NSInteger score;
 // gameType = 2 or 3, i.e. match 2 cards or match 3
 @property (nonatomic, readwrite) NSUInteger gameType;
+@property (nonatomic, readonly) NSString *lastMatchStatus;
+@property (nonatomic, readonly) NSString *cardStatus;
+@property (nonatomic, readonly) NSMutableArray *cardHistory;
 @end

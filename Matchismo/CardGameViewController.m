@@ -15,7 +15,9 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameSelector;
-@property (weak, nonatomic) IBOutlet UILabel *status;
+@property (weak, nonatomic) IBOutlet UILabel *matchStatus;
+@property (weak, nonatomic) IBOutlet UILabel *cardStatus;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
 @end
 
 @implementation CardGameViewController
@@ -41,9 +43,15 @@
                               forState:UIControlStateNormal];
         cardButton.enabled = YES;
     }
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: 0"];
+    self.scoreLabel.text = @"Score: 0";
+    self.matchStatus.text = @"";
     self.game = nil;
     self.gameSelector.enabled = YES;
+    self.slider.enabled = NO;
+    self.slider.minimumValue = 0;
+    self.slider.maximumValue = 0;
+    self.slider.value = 0;
+    self.cardStatus.text = @"";
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender
@@ -60,6 +68,11 @@
         self.game.gameType = 3;
     }
 }
+- (IBAction)slider:(UISlider *)sender {
+    int historyIndex = (int)floor(sender.value);
+    self.cardStatus.text = self.game.cardHistory[historyIndex];
+    self.cardStatus.alpha = 0.7;
+}
 
 - (void)updateUI
 {
@@ -72,8 +85,16 @@
         [cardButton setBackgroundImage:[self backgroundImageForCard:card]
                               forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
-        self.scoreLabel.text= [NSString stringWithFormat:@"Score: %d",
-                               self.game.score];
+    }
+    self.cardStatus.alpha = 1.0;
+    self.scoreLabel.text= [NSString stringWithFormat:@"Score: %d",
+                           self.game.score];
+    self.cardStatus.text = self.game.cardStatus;
+    self.matchStatus.text = self.game.lastMatchStatus;
+    if ([self.game.cardHistory count] > 1) {
+        self.slider.enabled = YES;
+        self.slider.maximumValue = [self.game.cardHistory count] - 1;
+        self.slider.value = self.slider.maximumValue;
     }
 }
 
