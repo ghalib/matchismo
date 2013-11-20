@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Card Game View Controller-->
+        <!--Playing Card Game View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="CardGameViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="PlayingCardGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B7E-ZE-yLa"/>
                         <viewControllerLayoutGuide type="bottom" id="dYS-Mq-VWC"/>
@@ -57,18 +57,6 @@
                                     <action selector="newGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pXL-Eu-Idm"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vm3-Pm-UyZ">
-                                <rect key="frame" x="20" y="452" width="280" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="2-Match"/>
-                                    <segment title="3-Match"/>
-                                </segments>
-                                <color key="tintColor" red="0.042159868670000003" green="0.16173325529999999" blue="0.66974250639999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="gameSelector:" destination="vXZ-lx-hvc" eventType="valueChanged" id="F2q-mf-gY5"/>
-                                </connections>
-                            </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV7-hD-TQo">
                                 <rect key="frame" x="20" y="368" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -87,13 +75,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="h6m-TM-zCM">
-                                <rect key="frame" x="143" y="314" width="159" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="slider:" destination="vXZ-lx-hvc" eventType="valueChanged" id="HhC-Ks-2iE"/>
-                                </connections>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYy-or-SVQ">
                                 <rect key="frame" x="115" y="20" width="40" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -363,10 +344,8 @@
                     </view>
                     <connections>
                         <outlet property="cardStatus" destination="KfX-hO-fI3" id="h7e-eo-QXm"/>
-                        <outlet property="gameSelector" destination="Vm3-Pm-UyZ" id="Uq3-dH-6cp"/>
                         <outlet property="matchStatus" destination="4jh-2c-mLh" id="STT-1e-Oz0"/>
                         <outlet property="scoreLabel" destination="9Za-dt-zDA" id="ZYZ-L6-NWN"/>
-                        <outlet property="slider" destination="h6m-TM-zCM" id="Hiu-Gf-2wd"/>
                         <outletCollection property="cardButtons" destination="zub-Zh-tIy" id="ql7-Vv-oYx"/>
                         <outletCollection property="cardButtons" destination="LO5-02-JbS" id="jGp-eV-3rm"/>
                         <outletCollection property="cardButtons" destination="HYy-or-SVQ" id="6Dg-n7-5Jd"/>
