@@ -15,9 +15,14 @@
 
 @implementation SetCardGameViewController
 
-- (Deck*) createDeck
+- (Deck*)createDeck
 {
     return [[SetCardDeck alloc] init];
+}
+
+- (NSUInteger)requiredCardMatch
+{
+    return 3;
 }
 
 @end

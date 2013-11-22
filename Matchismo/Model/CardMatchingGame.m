@@ -48,7 +48,9 @@
     }
 }
 
-- (instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck
+- (instancetype)initWithCardCount:(NSUInteger)count
+                        usingDeck:(Deck *)deck
+                requiredCardMatch:(NSUInteger)requiredCardMatch
 {
     self = [super init];
     if (self) {
@@ -63,7 +65,7 @@
         }
     }
     // Default to a two-card matching game
-    self.gameType = 2;
+    self.gameType = requiredCardMatch;
     return self;
 }
 
@@ -112,6 +114,7 @@ static const int COST_TO_CHOOSE = 1;
             if (self.chosenCards.count == (self.gameType - 1)) {
                 // match against other cards
                 int matchScore = [card match:self.chosenCards];
+                NSLog(@"Matchscore = %d\n", matchScore);
                 if (matchScore) {
                     self.score += matchScore * MATCH_BONUS;
                     for (Card *chosenCard in self.chosenCards) {

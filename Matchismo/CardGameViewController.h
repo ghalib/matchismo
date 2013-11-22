@@ -15,5 +15,6 @@
 // protected
 // for subclasses
 - (Deck *)createDeck; //abstract
+- (NSUInteger)requiredCardMatch;
 
 @end

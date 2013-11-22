@@ -23,13 +23,19 @@
 {
     if (!_game)
         _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
-                                                  usingDeck:[self createDeck]];
+                                                  usingDeck:[self createDeck]
+                                           requiredCardMatch:[self requiredCardMatch]];
     return _game;
 }
 
 - (Deck *)createDeck
 {
     return nil;
+}
+
+- (NSUInteger)requiredCardMatch
+{
+    return 2;
 }
 
 - (IBAction)newGame:(id)sender {

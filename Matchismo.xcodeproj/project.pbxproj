@@ -138,9 +138,9 @@
 				E1EC5047182B1042007407B3 /* Main.storyboard */,
 				E1EC5079182D7955007407B3 /* Model */,
 				E1EC504A182B1042007407B3 /* CardGameViewController.h */,
+				E1EC504B182B1042007407B3 /* CardGameViewController.m */,
 				E145C95B183D7DC700E106D7 /* PlayingCardGameViewController.h */,
 				E145C95C183D7DC700E106D7 /* PlayingCardGameViewController.m */,
-				E1EC504B182B1042007407B3 /* CardGameViewController.m */,
 				E145C964183EB86700E106D7 /* SetCardGameViewController.h */,
 				E145C965183EB86700E106D7 /* SetCardGameViewController.m */,
 				E1EC504D182B1042007407B3 /* Images.xcassets */,
@@ -174,9 +174,9 @@
 				E145C95F183E9CE000E106D7 /* SetCard.m */,
 				E1EC5071182C1EFE007407B3 /* PlayingCard.m */,
 				E1EC5073182C269A007407B3 /* PlayingCardDeck.h */,
+				E1EC5074182C269A007407B3 /* PlayingCardDeck.m */,
 				E145C961183E9FC400E106D7 /* SetCardDeck.h */,
 				E145C962183E9FC400E106D7 /* SetCardDeck.m */,
-				E1EC5074182C269A007407B3 /* PlayingCardDeck.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";

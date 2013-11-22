@@ -19,7 +19,7 @@
 {
     int score = 0;
     for (SetCard *otherCard in otherCards) {
-        if (otherCard.suit == self.suit) {
+        if ([self.suit isEqualToString:otherCard.suit]) {
             score += 4;
         }
     }
