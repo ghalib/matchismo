@@ -8,6 +8,7 @@
 
 #import "CardGameViewController.h"
 #import "CardMatchingGame.h"
+#import "HistoryViewController.h"
 
 @interface CardGameViewController ()
 @property (strong, nonatomic) CardMatchingGame *game;
@@ -85,5 +86,14 @@
 - (UIImage *)backgroundImageForCard:(Card *)card
 {
     return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowHistory"]) {
+        if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
+            HistoryViewController *historyVC = segue.destinationViewController;
+            historyVC.matchHistory = self.game.matchHistory;
+        }
+    }
 }
 @end

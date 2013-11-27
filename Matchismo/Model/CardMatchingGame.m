@@ -15,6 +15,7 @@
 @property (nonatomic, readwrite) NSString *lastMatchStatus;
 @property (nonatomic, readwrite) NSString *cardStatus;
 @property (nonatomic, readwrite) NSMutableArray *cardHistory;
+@property (nonatomic, readwrite) NSMutableArray *matchHistory;
 @end
 
 @implementation CardMatchingGame
@@ -38,6 +39,13 @@
     if (!_cardHistory)
         _cardHistory = [[NSMutableArray alloc] init];
     return _cardHistory;
+}
+
+- (NSMutableArray *)matchHistory
+{
+    if (!_matchHistory)
+        _matchHistory = [[NSMutableArray alloc] init];
+    return _matchHistory;
 }
 
 - (void)setCardStatus:(NSString *)cardStatus
@@ -78,11 +86,11 @@ static const int MISMATCH_PENALTY = 2;
 static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
 
-- (void)setMatchStatus:(Card *)card
+- (void)storeMatchStatus:(Card *)card
       chosenCards:(NSMutableArray *)chosenCards
            matchScore:(NSInteger)matchScore
 {
-    self.lastMatchStatus = @"";
+    self.lastMatchStatus = nil;
     if (matchScore) {
         self.lastMatchStatus = @"Match: ";
     } else {
@@ -97,6 +105,7 @@ static const int COST_TO_CHOOSE = 1;
     } else {
         self.lastMatchStatus = [self.lastMatchStatus stringByAppendingFormat:@". Lost %d points.", MISMATCH_PENALTY];
     }
+    [self.matchHistory addObject:self.lastMatchStatus];
 }
 
 - (void)chooseCardAtIndex:(NSUInteger)index
@@ -114,7 +123,6 @@ static const int COST_TO_CHOOSE = 1;
             if (self.chosenCards.count == (self.gameType - 1)) {
                 // match against other cards
                 int matchScore = [card match:self.chosenCards];
-                NSLog(@"Matchscore = %d\n", matchScore);
                 if (matchScore) {
                     self.score += matchScore * MATCH_BONUS;
                     for (Card *chosenCard in self.chosenCards) {
@@ -127,7 +135,7 @@ static const int COST_TO_CHOOSE = 1;
                         chosenCard.chosen = NO;
                     }
                 }
-                [self setMatchStatus:card chosenCards:self.chosenCards
+                [self storeMatchStatus:card chosenCards:self.chosenCards
                      matchScore:matchScore];
                 [self.chosenCards removeAllObjects];
             }

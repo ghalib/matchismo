@@ -26,4 +26,5 @@
 @property (nonatomic, readonly) NSString *lastMatchStatus;
 @property (nonatomic, readonly) NSString *cardStatus;
 @property (nonatomic, readonly) NSMutableArray *cardHistory;
+@property (nonatomic, readonly) NSMutableArray *matchHistory;
 @end

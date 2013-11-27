@@ -273,7 +273,7 @@
                     <navigationItem key="navigationItem" id="QVJ-TH-7MQ">
                         <barButtonItem key="rightBarButtonItem" title="History" id="k32-Xs-mck">
                             <connections>
-                                <segue destination="l4W-Mq-P0x" kind="push" id="hNJ-0w-4AG"/>
+                                <segue destination="jcw-aK-Inh" kind="push" identifier="ShowHistory" id="t6O-bl-dN6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -304,6 +304,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-52" y="831"/>
+        </scene>
+        <!--History View Controller - History-->
+        <scene sceneID="ezv-2V-7Bw">
+            <objects>
+                <tableViewController id="jcw-aK-Inh" customClass="HistoryViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RM0-ZM-r0J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="qCj-R0-RcY" style="IBUITableViewCellStyleDefault" id="Qfk-I3-58L">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qfk-I3-58L" id="9h8-jf-jDn">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qCj-R0-RcY">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jcw-aK-Inh" id="QRp-AW-zZE"/>
+                            <outlet property="delegate" destination="jcw-aK-Inh" id="idw-tE-mm2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="History" id="3iF-9y-oCd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Scl-W6-p0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="260" y="1403"/>
         </scene>
         <!--Set Card Game View Controller-->
         <scene sceneID="kDs-GM-hIT">
@@ -574,7 +612,7 @@
                     <navigationItem key="navigationItem" id="5Xe-gh-z3J">
                         <barButtonItem key="rightBarButtonItem" title="History" id="saE-AY-nJa">
                             <connections>
-                                <segue destination="l4W-Mq-P0x" kind="push" id="g52-MC-wc3"/>
+                                <segue destination="jcw-aK-Inh" kind="push" identifier="ShowHistory" id="ihn-27-PUy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -604,36 +642,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Anr-xo-JeZ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="556" y="817"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="AfB-9G-zt3">
-            <objects>
-                <tableViewController id="l4W-Mq-P0x" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DCh-19-XgM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZcH-2r-zT1">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZcH-2r-zT1" id="KLT-KM-6ei">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="l4W-Mq-P0x" id="nqA-0a-cz2"/>
-                            <outlet property="delegate" destination="l4W-Mq-P0x" id="gOC-6A-HcP"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="lGz-ly-58u"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l0v-aK-4BE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="263" y="1471"/>
+            <point key="canvasLocation" x="589" y="817"/>
         </scene>
         <!--Navigation Controller - PlayingCard-->
         <scene sceneID="xWn-zI-MVd">
@@ -702,6 +711,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hNJ-0w-4AG"/>
+        <segue reference="ihn-27-PUy"/>
     </inferredMetricsTieBreakers>
 </document>
